@@ -10,6 +10,8 @@ export class SidebarComponent implements OnInit {
   width: number = 0;
   pxMeasure: number = 70;
 
+  user: any = JSON.parse(localStorage.getItem('user'))
+
   constructor() { }
 
   @HostListener("window:resize", [])

@@ -17,9 +17,9 @@
     </button>
     <mat-menu #menu="matMenu">
         <button mat-menu-item disabled>
-            <span>Sign as Name</span>
+            <span>Sign as {{user.firstName}} {{user.firstLastName}}</span>
         </button>
-        <button mat-menu-item >
+        <button mat-menu-item [routerLink]='["/"]'>
             <mat-icon>save_alt</mat-icon>
             <span>Sign out</span>
         </button>
@@ -30,15 +30,15 @@
 <mat-sidenav-container id="sidenavContainer" fullscreen>
     <mat-sidenav mode='side' #sidenav id='sidenav' opened>
         <mat-list [ngStyle]="{ 'width.px': pxMeasure }">
-            <mat-list-item class='list-items'>
+            <!-- <mat-list-item class='list-items'>
                 <button *ngIf='pxMeasure == 240' class='menu-item' mat-flat-button [routerLink]='["/"]'>
                     <mat-icon class='icon-item'>home</mat-icon><span>Home</span>
                 </button>
                 <button *ngIf='pxMeasure == 70' class="menu-item-compress" mat-flat-button [routerLink]='["/"]'>
                     <mat-icon class='icon-item'>home</mat-icon>
                 </button>
-            </mat-list-item>
-            <mat-list-item>
+            </mat-list-item> -->
+            <mat-list-item *ngIf='user.role.name=="Admin"'>
                 <button *ngIf='pxMeasure == 240' class='menu-item' mat-flat-button [routerLink]='["/characters"]'>
                     <mat-icon class='icon-item'>contacts</mat-icon><span>Administrators</span>
                 </button>
@@ -47,7 +47,7 @@
                     <mat-icon class='icon-item'>contacts</mat-icon>
                 </button>
             </mat-list-item>
-            <mat-list-item>
+            <mat-list-item *ngIf='user.role.name=="Admin"'>
                 <button *ngIf='pxMeasure == 240' class='menu-item' mat-flat-button [routerLink]='["/dash"]'>
                     <mat-icon class='icon-item'>face</mat-icon><span>Pacients</span>
                 </button>
