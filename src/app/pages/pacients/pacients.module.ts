@@ -5,6 +5,7 @@ import { PacientsRoutingModule } from './pacients-routing.module';
 import { PacientsComponent } from './pacients.component';
 import { TableModule } from 'src/app/components/table/table.module';
 
+import { MatProgressSpinnerModule } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import { TableModule } from 'src/app/components/table/table.module';
   imports: [
     CommonModule,
     PacientsRoutingModule,
-    TableModule
+    TableModule,
+    MatProgressSpinnerModule
   ]
 })
 export class PacientsModule { }
