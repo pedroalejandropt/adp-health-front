@@ -12,6 +12,9 @@ export class UserService {
   constructor(private _http: HttpClient) { }
 
   fetchUser = () => { return this._http.get(`${this.url}`).toPromise() }
+
   getUserById = (id) => { return this._http.get(`${this.url}${id}`).toPromise() }
+
+  signin = (user) => { return this._http.post(`${this.url}login`, user).toPromise() }
 
 }
