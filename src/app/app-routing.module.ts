@@ -13,6 +13,10 @@ const routes: Routes = [
         loadChildren: 'src/app/pages/sign-in/sign-in.module#SignInModule'
       },
       {
+        path: 'sign-up',
+        loadChildren: 'src/app/pages/sign-up/sign-up.module#SignUpModule'
+      },
+      {
         path: 'dash',
         loadChildren: 'src/app/components/sidebar/sidebar.module#SidebarModule'
       }
