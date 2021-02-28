@@ -7,10 +7,11 @@ import { environment } from 'src/environments/environment';
 })
 export class UserService {
 
-  url: string = environment.api
+  url: string = `${environment.api}users/`
 
   constructor(private _http: HttpClient) { }
 
-  fetchUser = () => { return this._http.get(`${this.url}users`).toPromise() }
+  fetchUser = () => { return this._http.get(`${this.url}`).toPromise() }
+  getUserById = (id) => { return this._http.get(`${this.url}${id}`).toPromise() }
 
 }
