@@ -37,10 +37,7 @@ export class TableComponent implements OnInit, AfterViewInit {
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = this.filter.trim().toLowerCase();
-
-    console.log(this.dataSource);
     
-
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
@@ -52,8 +49,6 @@ export class TableComponent implements OnInit, AfterViewInit {
     border.style.height = '1px';
     formField['style']['width'] =  '200px';
     formField['style']['transition'] = 'all 0.3s ease-in-out 0s';
-    
-
   }
 
   leave = async () => {
