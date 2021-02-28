@@ -1,0 +1,40 @@
+<div class="screen">
+    <img alt='' class="img_background" src="../../../assets/datepicker.svg" />
+    <div class="signin card">
+        <div class="header">
+            <p class="title">
+                Appointment
+            </p>
+            <p class="subtitle">
+                Select a date to add a new appointment.
+            </p>
+        </div>
+        <div class="form">
+            <mat-form-field appearance="outline">
+                <mat-label>First Name</mat-label>
+                <input matInput [(ngModel)]='record.firstName' disabled>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Last Name</mat-label>
+                <input matInput [(ngModel)]='record.firstLastName' disabled>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Email</mat-label>
+                <input matInput [(ngModel)]='record.email' disabled>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Appointment Date</mat-label>
+                <input matInput [matDatepicker]="picker" [(ngModel)]="record.date">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Description</mat-label>
+                <textarea matInput [(ngModel)]="record.description"></textarea>
+            </mat-form-field>
+        </div>
+        <button mat-flat-button color='warn' (click)='close.emit()'>Cancel</button>
+        <button mat-flat-button color='primary' (click)='actionAppointment()'>{{ option }}</button>
+        
+    </div>
+</div>
