@@ -15,11 +15,11 @@
         <div class="form">
             <mat-form-field appearance="outline">
                 <mat-label>Email</mat-label>
-                <input matInput placeholder="example@example.com">
+                <input matInput placeholder="example@example.com" [(ngModel)]='user.email'>
             </mat-form-field>
             <mat-form-field appearance="outline">
                 <mat-label>Password</mat-label>
-                <input matInput placeholder="*******">
+                <input matInput placeholder="*******" [(ngModel)]='user.password'>
             </mat-form-field>
         </div>
         <div class="remember">
@@ -27,6 +27,6 @@
                 <mat-checkbox class="remember_checkbox"> Remember this device.</mat-checkbox>
             </section>
         </div>
-        <button mat-flat-button color='primary'>Sign In</button>
+        <button mat-flat-button color='primary' (click)='login();'>Sign In</button>
     </div>
 </div>

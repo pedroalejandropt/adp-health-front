@@ -6,6 +6,8 @@ import { SignInComponent } from './sign-in.component';
 
 import { MatInputModule, MatFormFieldModule, MatButtonModule, MatCheckboxModule } from '@angular/material';
 
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { MatInputModule, MatFormFieldModule, MatButtonModule, MatCheckboxModule 
     MatInputModule,
     MatFormFieldModule,
     MatButtonModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class SignInModule { }
