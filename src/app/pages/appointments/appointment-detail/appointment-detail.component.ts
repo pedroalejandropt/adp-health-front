@@ -12,7 +12,7 @@ export class AppointmentDetailComponent implements OnInit {
   @Output() close = new EventEmitter<any>();
 
   title: string = 'List of Novelties';
-  header: any = {'actions': 'Actions', 'description': 'Description' }
+  header: any;
 
   actions: Action[] = []
 
@@ -21,13 +21,14 @@ export class AppointmentDetailComponent implements OnInit {
 
   loading: boolean = true;
 
+  user: any = JSON.parse(localStorage.getItem('user'))
+
   constructor(private _service: NoveltyService) { }
 
   ngOnInit() { 
-    this.actions = [
-      { icon: 'edit', tooltip: 'Edit Novelty', action: (record) => this.show(record) }]
-
-      this.fetchNovelties();
+    this.header = (this.user.role.name != 'Admin') ? {'actions': 'Actions', 'description': 'Description' } : {'description': 'Description' };
+    this.actions = (this.user.role.name != 'Admin') ? [{ icon: 'edit', tooltip: 'Edit Novelty', action: (record) => this.show(record) }] : [];
+    this.fetchNovelties();
   }
 
   fetchNovelties = () => this._service.fetchNoveltiesById(this.record.id).then((res:any) => {

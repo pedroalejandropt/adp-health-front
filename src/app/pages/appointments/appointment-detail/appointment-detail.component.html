@@ -48,7 +48,7 @@
         </ng-template>
         <div class="novelty">
             <app-table *ngIf="!loading" [title]="title" [actions]="actions" [records]="novelties" [header]="header"></app-table>
-            <div class="new-novelty">
+            <div *ngIf='user.role.name != "Admin"' class="new-novelty">
                 <button mat-raised-button color='primary' (click)='show()'>NEW NOVELTY</button>
             </div>
             <div *ngIf='novelty' class="novelty-form">
