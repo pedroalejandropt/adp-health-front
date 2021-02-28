@@ -1,0 +1,40 @@
+<div class="screen">
+    <img alt='' class="img_background" src="../../../assets/home.svg"/>
+    <div class="signin card">
+        <div class="header">
+            <p class="title">
+                Medical Health
+            </p>
+            <p class="create_account">
+                Have account? <a [routerLink]='["/"]'>Sign in.</a>
+            </p>
+        </div>
+        <div class="form">
+            <mat-form-field appearance="outline">
+                <mat-label>First Name</mat-label>
+                <input matInput placeholder="" [(ngModel)]='user.firstName'>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Middle Name</mat-label>
+                <input matInput placeholder="" [(ngModel)]='user.middleName'>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>First Last Name</mat-label>
+                <input matInput placeholder="" [(ngModel)]='user.firstLastName'>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Second Last Name</mat-label>
+                <input matInput placeholder="" [(ngModel)]='user.secondLastName'>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Email</mat-label>
+                <input matInput placeholder="example@example.com" [(ngModel)]='user.email'>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Password</mat-label>
+                <input matInput placeholder="*******" [(ngModel)]='user.password'>
+            </mat-form-field>
+        </div>
+        <button mat-flat-button color='primary' (click)='signUp();'>Sign Up</button>
+    </div>
+</div>
