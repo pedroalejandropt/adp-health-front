@@ -14,6 +14,6 @@ export class NoveltyService {
   fetchNoveltiesById = (id) => { return this._http.get(`${this.url}appointment/${id}`).toPromise() }
 
   addNovelty = (novelty) => { return this._http.post(`${this.url}`, novelty).toPromise() }
-  editNovelty = (id, novelty) => { return this._http.post(`${this.url}/${id}`, novelty).toPromise() }
+  editNovelty = (id, novelty) => { return this._http.put(`${this.url}${id}`, novelty).toPromise() }
   
 }
