@@ -1,0 +1,13 @@
+<div class="screen">
+    <app-table *ngIf="!record" [title]="title" [actions]="actions" [records]="pacients" [header]="header"></app-table>
+
+    <div *ngIf="record">
+        Hola {{ record.firstName }}
+        <button (click)='record=""'>
+            close
+        </button>
+    </div>
+</div>
+
+
+
