@@ -23,4 +23,8 @@ export class AppointmentFormComponent implements OnInit {
     this.record.function(this.record).then((res: any) => { console.log(res); this.close.emit(); }, (error) => { console.log(error) }) ;
   }
 
+  checkAppointment = () => {
+    if (!this.record.description || !this.record.date ) return true; else return false;
+  }
+
 }
