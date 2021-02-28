@@ -28,13 +28,13 @@
             <td mat-cell *matCellDef="let element">
                 <div class="actions" *ngIf="actions.length > 0 && record == 'actions'">
                     <div class="action" *ngFor='let action of actions'>
-                        <button mat-icon-button (click)="action.action(element)">
+                        <button mat-icon-button (click)="action.action(element)" [matTooltip]="action.tooltip">
                             <mat-icon>{{ action.icon }}</mat-icon>
                         </button>
                     </div>
                 </div>
                 <div class="text" *ngIf="objectKeys(header) != 'actions'">
-                    {{ element[record] }}
+                    {{ isDate(element[record]) ? (element[record] | date:'dd/MM/yyyy') : element[record] }}
                 </div>
             </td>
         </ng-container>

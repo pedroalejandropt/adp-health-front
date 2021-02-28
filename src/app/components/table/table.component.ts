@@ -59,6 +59,9 @@ export class TableComponent implements OnInit, AfterViewInit {
     setTimeout(() => border.style.height = (this.filter) ? '1px' : '0px', 300);
   }
 
+  isDate = (data) => { if(!isNaN(Date.parse(data))) return true; else return false; }
+  isMail = (data) => { if(data.includes('@')) return true; else return false; }
+
 }
 
 /* export interface PeriodicElement {
