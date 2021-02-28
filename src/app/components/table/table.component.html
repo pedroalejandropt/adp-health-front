@@ -1,0 +1,49 @@
+<div class="header">
+    <h1> {{ title }} </h1>
+    <div class="filter">
+        <mat-form-field>
+            <mat-label class='filter-label'>Filter</mat-label>
+            <input matInput (keyup)="applyFilter($event)" (blur)="leave()" [(ngModel)]="filter" placeholder="search">
+            <button mat-button *ngIf="filter" matSuffix mat-icon-button aria-label="Clear" (click)="filter=''; applyFilter($event);">
+                <mat-icon>close</mat-icon>
+            </button>
+            <button mat-button *ngIf="!filter" matSuffix mat-icon-button (click)='search()'>
+                <mat-icon>search</mat-icon>
+            </button>
+        </mat-form-field>
+    </div>
+</div>
+
+<div class="content mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" matSort>
+
+        <ng-container [matColumnDef]="record" *ngFor='let record of objectKeys(header)'>
+            <div *ngIf="actions.length > 0 && record == 'actions'">
+                <th mat-header-cell *matHeaderCellDef> {{ header[record] }} </th>
+            </div>
+            <div *ngIf="objectKeys(header) != 'actions'">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> {{ header[record] }} </th>
+            </div>
+            <!-- <th mat-header-cell *matHeaderCellDef mat-sort-header> {{ header[record] }} </th> -->
+            <td mat-cell *matCellDef="let element">
+                <div class="actions" *ngIf="actions.length > 0 && record == 'actions'">
+                    <div class="action" *ngFor='let action of actions'>
+                        <button mat-icon-button (click)="action.action(element)">
+                            <mat-icon>{{ action.icon }}</mat-icon>
+                        </button>
+                    </div>
+                </div>
+                <div class="text" *ngIf="objectKeys(header) != 'actions'">
+                    {{ element[record] }}
+                </div>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="objectKeys(header)"></tr>
+        <tr mat-row *matRowDef="let row; columns: objectKeys(header);"></tr>
+
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+
+</div>
