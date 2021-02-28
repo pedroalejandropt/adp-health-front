@@ -39,7 +39,7 @@
                 </button>
             </mat-list-item> -->
             <mat-list-item *ngIf='user.role.name=="Admin"'>
-                <button *ngIf='pxMeasure == 240' class='menu-item' mat-flat-button [routerLink]='["/characters"]'>
+                <button *ngIf='pxMeasure == 240' class='menu-item' mat-flat-button [routerLink]='["/dash"]'>
                     <mat-icon class='icon-item'>contacts</mat-icon><span>Administrators</span>
                 </button>
                 <button *ngIf='pxMeasure == 70' class="menu-item-compress" mat-flat-button
@@ -48,18 +48,18 @@
                 </button>
             </mat-list-item>
             <mat-list-item *ngIf='user.role.name=="Admin"'>
-                <button *ngIf='pxMeasure == 240' class='menu-item' mat-flat-button [routerLink]='["/dash"]'>
+                <button *ngIf='pxMeasure == 240' class='menu-item' mat-flat-button [routerLink]='["/dash/pacients"]'>
                     <mat-icon class='icon-item'>face</mat-icon><span>Pacients</span>
                 </button>
-                <button *ngIf='pxMeasure == 70' class="menu-item-compress" mat-flat-button [routerLink]='["/dash"]'>
+                <button *ngIf='pxMeasure == 70' class="menu-item-compress" mat-flat-button [routerLink]='["/dash/pacients"]'>
                     <mat-icon class='icon-item'>face</mat-icon>
                 </button>
             </mat-list-item>
             <mat-list-item>
-                <button *ngIf='pxMeasure == 240' class='menu-item' mat-flat-button [routerLink]='["/dash/appointment"]'>
+                <button *ngIf='pxMeasure == 240' class='menu-item' mat-flat-button [routerLink]='["/dash"]'>
                     <mat-icon class='icon-item'>library_books</mat-icon><span>Appointments</span>
                 </button>
-                <button *ngIf='pxMeasure == 70' class="menu-item-compress" mat-flat-button [routerLink]='["/dash/appointment"]'>
+                <button *ngIf='pxMeasure == 70' class="menu-item-compress" mat-flat-button [routerLink]='["/dash"]'>
                     <mat-icon class='icon-item'>library_books</mat-icon>
                 </button>
             </mat-list-item>

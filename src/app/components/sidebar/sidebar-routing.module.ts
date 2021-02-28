@@ -10,11 +10,11 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        loadChildren: 'src/app/pages/pacients/pacients.module#PacientsModule'
+        loadChildren: 'src/app/pages/appointments/appointments.module#AppointmentsModule'
       },
       {
-        path: 'appointment',
-        loadChildren: 'src/app/pages/appointments/appointments.module#AppointmentsModule'
+        path: 'pacients',
+        loadChildren: 'src/app/pages/pacients/pacients.module#PacientsModule'
       }
     ]
   }
