@@ -2,10 +2,7 @@
     <app-table *ngIf="!record && !loading" [title]="title" [actions]="actions" [records]="pacients" [header]="header"></app-table>
 
     <div *ngIf="record">
-        Hola {{ record.firstName }}
-        <button (click)='record=""'>
-            close
-        </button>
+        <app-appointment-form [record]='record' option='ADD' (close)='record=""'></app-appointment-form>
     </div>
 
     <mat-spinner *ngIf='loading'></mat-spinner>
