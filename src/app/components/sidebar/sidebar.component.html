@@ -1,0 +1,72 @@
+<mat-toolbar color='primary'>
+    <button *ngIf="width >= 800" class='toggle' mat-icon-button (click)='onToolbarMenuToggle()'>
+        <mat-icon class='icon'>menu</mat-icon>
+    </button>
+    <label class="title">
+        Medical Health
+    </label>
+    <span class="spacer"></span>
+    
+    <!-- <button class="signout" mat-button (click)='onToolbarMenuToggle()'>
+        <mat-icon class='icon'>save_alt</mat-icon>
+        <span>Sign out</span>
+    </button> -->
+
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+        <img class='avatar' src='http://i.pravatar.cc/300' width="35px" height="35px">
+    </button>
+    <mat-menu #menu="matMenu">
+        <button mat-menu-item disabled>
+            <span>Sign as Name</span>
+        </button>
+        <button mat-menu-item >
+            <mat-icon>save_alt</mat-icon>
+            <span>Sign out</span>
+        </button>
+    </mat-menu>
+
+</mat-toolbar>
+
+<mat-sidenav-container id="sidenavContainer" fullscreen>
+    <mat-sidenav mode='side' #sidenav id='sidenav' opened>
+        <mat-list [ngStyle]="{ 'width.px': pxMeasure }">
+            <mat-list-item class='list-items'>
+                <button *ngIf='pxMeasure == 240' class='menu-item' mat-flat-button [routerLink]='["/"]'>
+                    <mat-icon class='icon-item'>home</mat-icon><span>Home</span>
+                </button>
+                <button *ngIf='pxMeasure == 70' class="menu-item-compress" mat-flat-button [routerLink]='["/"]'>
+                    <mat-icon class='icon-item'>home</mat-icon>
+                </button>
+            </mat-list-item>
+            <mat-list-item>
+                <button *ngIf='pxMeasure == 240' class='menu-item' mat-flat-button [routerLink]='["/characters"]'>
+                    <mat-icon class='icon-item'>contacts</mat-icon><span>Administrators</span>
+                </button>
+                <button *ngIf='pxMeasure == 70' class="menu-item-compress" mat-flat-button
+                    [routerLink]='["/characters"]'>
+                    <mat-icon class='icon-item'>contacts</mat-icon>
+                </button>
+            </mat-list-item>
+            <mat-list-item>
+                <button *ngIf='pxMeasure == 240' class='menu-item' mat-flat-button [routerLink]='["/comics"]'>
+                    <mat-icon class='icon-item'>face</mat-icon><span>Pacients</span>
+                </button>
+                <button *ngIf='pxMeasure == 70' class="menu-item-compress" mat-flat-button [routerLink]='["/comics"]'>
+                    <mat-icon class='icon-item'>face</mat-icon>
+                </button>
+            </mat-list-item>
+            <mat-list-item>
+                <button *ngIf='pxMeasure == 240' class='menu-item' mat-flat-button [routerLink]='["/series"]'>
+                    <mat-icon class='icon-item'>library_books</mat-icon><span>Appointments</span>
+                </button>
+                <button *ngIf='pxMeasure == 70' class="menu-item-compress" mat-flat-button [routerLink]='["/series"]'>
+                    <mat-icon class='icon-item'>library_books</mat-icon>
+                </button>
+            </mat-list-item>
+        </mat-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content [ngStyle]="{ 'margin-left.px': pxMeasure }">
+        <router-outlet></router-outlet>
+    </mat-sidenav-content>
+</mat-sidenav-container>

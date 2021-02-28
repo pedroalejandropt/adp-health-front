@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@600&display=swap');
+
+.title {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 30px;
+    margin: 0;
+    color: #FE9E22;
+}
+
+.toggle {
+    border: none;
+    outline:none;
+    background-color: transparent;
+}
+
+.spacer {
+    flex: 1 1 auto;
+}
+
+.avatar {
+    border-radius: 50%;
+}
+
+.signout {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .mat-icon {
+        margin: 0 5px 0 0;
+    }
+    
+    span {
+        color: #fff;
+        margin: 0;
+    }
+}
+
+.signout:hover {
+
+    .mat-icon {
+        color: lightgrey
+    }
+    
+    span {
+        color: lightgrey;
+    }
+}
+
+.list-items {
+    margin-top: 10px;
+}
+
+.menu-item {
+    display: flex;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    border-radius: 0;
+    text-align: left;
+    padding: 10px;
+}
+
+.menu-item:hover {
+    background-color: lightgray;
+}
+
+.menu-item-compress {
+    width: 100%;
+    position: absolute;
+    left: 0;
+    padding: 10px;
+}
+
+.menu-item-compress:hover {
+    background-color: lightgray;
+}
+
+::ng-deep .mat-list-item {
+    height: 70px !important;
+}
+
+#sidenavContainer {
+    margin-top: 64px;
+}
+
+.icon {
+    color: white;
+    margin-right: 30px;
+}
+
+.icon-item {
+    color: #4051b5;
+}
+
+button {
+    background-color: transparent;
+    border: none;
+    outline: none;
+}
+
+span {
+    align-self: center;
+    text-transform: uppercase;
+    margin-left: 20px;
+    font-size: 15px;
+    color: #4051b5;
+}
