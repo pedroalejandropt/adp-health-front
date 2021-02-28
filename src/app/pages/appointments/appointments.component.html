@@ -1,0 +1,13 @@
+<div class="screen">
+    <app-table *ngIf="!form && !loading" [title]="title" [actions]="actions" [records]="appointments" [header]="header"></app-table>
+
+    <div>
+        <app-appointment-form *ngIf="form=='edit'" [record]='record' option='EDIT' (close)='form=""'></app-appointment-form>
+        <app-appointment-detail *ngIf="form=='detail'" [record]='record' (close)='form=""'></app-appointment-detail>
+    </div>
+
+    <mat-spinner *ngIf='loading'></mat-spinner>
+</div>
+
+
+
