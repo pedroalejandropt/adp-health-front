@@ -16,5 +16,6 @@ export class UserService {
   getUserById = (id) => { return this._http.get(`${this.url}${id}`).toPromise() }
 
   signin = (user) => { return this._http.post(`${this.url}login`, user).toPromise() }
+  signup = (user) => { return this._http.post(`${this.url}`, user).toPromise() }
 
 }
