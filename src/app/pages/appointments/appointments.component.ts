@@ -21,21 +21,35 @@ export class AppointmentsComponent implements OnInit {
 
   loading: boolean = true;
 
+  user: any = JSON.parse(localStorage.getItem('user'))
+
   constructor(
     private _userservice: UserService, 
     private _appoinmentservice: AppointmentService
     ) { }
 
   ngOnInit() {
-    this.actions = [
+    this.actions = (this.user.role.name == 'Admin') ? [
       { icon: 'visibility', tooltip: 'View Appointment', action: (record) => this.detailAppointment(record) },
-      { icon: 'edit', tooltip: 'Edit Appointment', action: (record) => this.editAppointment(record) }]
+      { icon: 'edit', tooltip: 'Edit Appointment', action: (record) => this.editAppointment(record) }] :
+      [{ icon: 'visibility', tooltip: 'View Appointment', action: (record) => this.detailAppointment(record) }]
 
-    this.fetchAppointments();
+    if (this.user.role.name == 'Admin') this.fetchAppointments(); else this.fetchAppointmentsById();
   }
 
   fetchAppointments = () => 
     this._appoinmentservice.fetchAppointments().then((res: any) => { 
+      this.appointments = res.map((appointment) => { 
+        appointment['firstName']= appointment.user.firstName;
+        appointment['firstLastName']= appointment.user.firstLastName;
+        appointment['email']= appointment.user.email;
+        return appointment;
+    });
+      this.loading = false 
+    })
+
+  fetchAppointmentsById = () => 
+    this._appoinmentservice.fetchAppointmentsByUser(this.user.id).then((res: any) => { 
       this.appointments = res.map((appointment) => { 
         appointment['firstName']= appointment.user.firstName;
         appointment['firstLastName']= appointment.user.firstLastName;
