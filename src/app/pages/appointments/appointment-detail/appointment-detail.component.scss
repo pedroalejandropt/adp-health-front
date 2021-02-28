@@ -1,0 +1,80 @@
+.tab-icon {
+    margin-right: 8px;
+}
+
+.detail {
+    text-align: left;
+    padding: 25px;
+    margin-top: 25px;
+    margin-left: 25px;
+    border: 0.5px solid lightgrey;
+    background-color: #fff;
+    padding: 30px;
+    z-index: 1000;
+    width: 400px;
+
+    .img_background {
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        width: 600px;
+        z-index: -10;
+    }
+
+    .title {
+        font-family: 'Raleway', sans-serif;
+    }
+
+    .subtitle {
+        font-family: 'Arial', sans-serif;
+        font-size: 20px;
+        color: gray;
+        width: 200px;
+    }
+
+    .info {
+        font-family: 'Arial', sans-serif;
+        font-size: 20px;
+    }
+
+    table {
+        tr {
+            height: 40px;
+        }
+    }
+
+    .back {
+        width: 100%;
+        margin-top: 25px;
+        padding: 10px 20px 10px 20px;
+    }
+}
+
+
+
+.novelty {
+    text-align: left;
+    padding: 25px;
+
+    .new-novelty {
+        margin-top: 20px;
+        width: 90%;
+        text-align: right;
+    }
+
+    .novelty-form {
+        margin-top: 30px;
+        text-align: center;
+
+        .mat-form-field {
+            width: 70%;
+        }
+
+        button {
+            margin-left: 20px;
+            width: 100px;
+            padding: 10px 20px 10px 20px;
+        }
+    }
+}
+

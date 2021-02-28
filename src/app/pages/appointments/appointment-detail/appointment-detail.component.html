@@ -1,0 +1,66 @@
+<mat-tab-group>
+    <mat-tab>
+        <ng-template mat-tab-label>
+            <mat-icon class="tab-icon">info</mat-icon>
+            Detail
+        </ng-template>
+        <div class="detail">
+            <img alt='' class="img_background" src="../../../assets/datepicker.svg" />
+            <h1 class="title">Personal Information</h1>
+            <table>
+                <tr>
+                    <td class="subtitle">Name</td>
+                    <td class="info">{{ record.user.firstName }} {{ record.user.middleName }}</td>
+                </tr>
+                <tr>
+                    <td class="subtitle">Last Name</td>
+                    <td class="info">{{ record.user.firstLastName }} {{ record.user.secondLastName }}</td>
+                </tr>
+                <tr>
+                    <td class="subtitle">Email</td>
+                    <td class="info">{{ record.user.email }}</td>
+                </tr>
+            </table>
+
+            <h1 class="title">Appointment Information</h1>
+            <table>
+                <tr>
+                    <td class="subtitle">Date</td>
+                    <td class="info">{{ record.date | date: 'dd/MM/yyy' }} </td>
+                </tr>
+                <tr>
+                    <td class="subtitle">Description</td>
+                    <td class="info">{{ record.description }}</td>
+                </tr>
+                <tr>
+                    <td class="subtitle">State</td>
+                    <td class="info"><button mat-raised-button [color]="(record.state) ? 'primary' : 'warn'"> {{ (record.state) ? 'Activa' : 'Inactiva' }} </button></td>
+                </tr>
+            </table>
+            <button mat-raised-button color='accent' class='back' (click)='close.emit()'> RETURN TO APPOINTMENTS </button>
+        </div>
+    </mat-tab>
+
+    <mat-tab>
+        <ng-template mat-tab-label>
+            <mat-icon class="tab-icon">fiber_new</mat-icon>
+            Novelties
+        </ng-template>
+        <div class="novelty">
+            <app-table *ngIf="!loading" [title]="title" [actions]="actions" [records]="novelties" [header]="header"></app-table>
+            <div class="new-novelty">
+                <button mat-raised-button color='primary' (click)='show()'>NEW NOVELTY</button>
+            </div>
+            <div *ngIf='novelty' class="novelty-form">
+                <div class="form">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Description</mat-label>
+                        <textarea matInput [(ngModel)]='novelty.description'></textarea>
+                    </mat-form-field>
+                    <button mat-raised-button color='warn' (click)='hide()'>CANCEL</button>
+                    <button mat-raised-button color='primary' (click)='action()'>DONE</button>
+                </div>
+            </div>
+        </div>
+    </mat-tab>
+</mat-tab-group>
