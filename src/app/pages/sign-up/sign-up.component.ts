@@ -9,6 +9,7 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class SignUpComponent implements OnInit {
 
+  hide: boolean = true;
   user: any = { firstName: '', middleName: '', firstLastName: '', secondLastName: '', email: '', password: '', role: 2 };
   
   constructor(
@@ -22,4 +23,8 @@ export class SignUpComponent implements OnInit {
     this._service.signup(this.user).then(() => { console.log('YESS'); this._router.navigate(['/']); })
   }
 
+  checkUser = () => {
+    if (this.user.firstName=='' || this.user.firstLastName=='' || this.user.secondLastName=='' || this.user.email=='' || this.user.password=='') return true; return false;
+  }
+  
 }

@@ -9,6 +9,7 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class SignInComponent implements OnInit {
 
+  hide: boolean = true;
   user: any = { email: '', password: '' };
 
   constructor(
@@ -24,5 +25,9 @@ export class SignInComponent implements OnInit {
       localStorage.setItem('user', JSON.stringify(res[0]));
       this._router.navigate(['/dash'])
     }, error => console.log('BUUU'));
+
+    checkUser = () => {
+      if ( this.user.email=='' || this.user.password=='') return true; else return false;
+    }
 
 }
