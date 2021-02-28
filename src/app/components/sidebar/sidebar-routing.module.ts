@@ -11,6 +11,10 @@ const routes: Routes = [
       {
         path: '',
         loadChildren: 'src/app/pages/pacients/pacients.module#PacientsModule'
+      },
+      {
+        path: 'appointment',
+        loadChildren: 'src/app/pages/appointments/appointments.module#AppointmentsModule'
       }
     ]
   }
