@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AppointmentService } from 'src/app/services/appointment.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -11,10 +12,7 @@ export class PacientsComponent implements OnInit {
   title: string = 'List of Pacients';
   header: any = {'actions': 'Actions', 'firstName': 'First Name', 'firstLastName': 'Last Name', 'email': 'Mail'}
 
-  pacients: any[] = [
-    /* {firstName: 'Pedro', firstLastName: 'Pacheco', email: 'pp@gmail.com'},
-    {firstName: 'Arturo', firstLastName: 'Pacheco', email: 'aa@gmail.com'} */
-  ];
+  pacients: any[] = [];
 
   record: any = null;
 
@@ -22,24 +20,29 @@ export class PacientsComponent implements OnInit {
 
   loading: boolean = true;
 
-  constructor(private _service: UserService) { }
+  constructor(
+    private _userservice: UserService, 
+    private _appoinmentservice: AppointmentService
+    ) { }
 
   ngOnInit() {
     this.actions = [
-      { icon: 'menu', action: (icon) => this.hola(icon) },
-      { icon: 'face', action: () => this.chao() }]
+      { icon: 'assignment', tooltip: 'Add Appointment', action: (record) => this.addAppointment(record) }]
 
-      this._service.fetchUser().then((res: any) => { this.pacients = res; this.loading = false })
+    this.fetchUsers();
   }
 
+  fetchUsers = () => this._userservice.fetchUser().then((res: any) => { this.pacients = res; this.loading = false })
+
+  addAppointment = (record) => { 
+    this.record = record; 
+    this.record['function'] = (appointment) => this._appoinmentservice.addAppointment(appointment);
+  }
   
-
-  hola = (icon) => this.record = icon;
-  chao = () => console.log('chao');
-
 }
 
 export interface Action {
   icon: string;
+  tooltip: string;
   action: Function;
 }
