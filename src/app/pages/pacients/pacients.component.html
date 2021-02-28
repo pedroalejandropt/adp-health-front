@@ -1,5 +1,5 @@
 <div class="screen">
-    <app-table *ngIf="!record" [title]="title" [actions]="actions" [records]="pacients" [header]="header"></app-table>
+    <app-table *ngIf="!record && !loading" [title]="title" [actions]="actions" [records]="pacients" [header]="header"></app-table>
 
     <div *ngIf="record">
         Hola {{ record.firstName }}
@@ -7,6 +7,8 @@
             close
         </button>
     </div>
+
+    <mat-spinner *ngIf='loading'></mat-spinner>
 </div>
 
 
