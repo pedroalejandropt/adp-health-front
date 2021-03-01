@@ -10,7 +10,7 @@ import { UserService } from 'src/app/services/user.service';
 export class AppointmentsComponent implements OnInit {
 
   title: string = 'List of Appointments';
-  header: any = {'actions': 'Actions', 'firstName': 'Name', 'firstLastName': 'Last Name', 'date': 'Date', 'state': 'State' }
+  header: any = {'actions': 'Actions', 'firstName': 'Name', 'firstLastName': 'Last Name', 'date': 'Date' }
 
   appointments: any[] = [];
 
@@ -30,9 +30,11 @@ export class AppointmentsComponent implements OnInit {
 
   ngOnInit() {
     this.actions = (this.user.role.name == 'Admin') ? [
-      { icon: 'visibility', tooltip: 'View Appointment', action: (record) => this.detailAppointment(record) },
-      { icon: 'edit', tooltip: 'Edit Appointment', action: (record) => this.editAppointment(record) }] :
-      [{ icon: 'visibility', tooltip: 'View Appointment', action: (record) => this.detailAppointment(record) }]
+        { icon: 'visibility', tooltip: 'View Appointment', action: (record) => this.detailAppointment(record) },
+        { icon: 'edit', tooltip: 'Edit Appointment', action: (record) => this.editAppointment(record) }] :
+      [
+        { icon: 'visibility', tooltip: 'View Appointment', action: (record) => this.detailAppointment(record) },
+        { icon: 'check', tooltip: 'Complete Appointment', action: (record) => this.changeState(record) }]
 
     if (this.user.role.name == 'Admin') this.fetchAppointments(); else this.fetchAppointmentsById();
   }
@@ -63,6 +65,12 @@ export class AppointmentsComponent implements OnInit {
     this.form = 'edit';
     this.record = record;
     this.record['function'] = (appointment) => this._appoinmentservice.editAppointment(appointment.id, appointment);
+  }
+
+  changeState = async (record) => {
+    this.record = await record;
+    this.record.state = await false;
+    await this._appoinmentservice.editAppointment(this.record.id, this.record);
   }
 
   detailAppointment = (record) => {
