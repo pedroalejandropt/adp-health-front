@@ -15,7 +15,7 @@ export class TableComponent implements OnInit, AfterViewInit {
   @Input() records: any[];
   @Input() actions: any[];
 
-  @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
+  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: false }) sort: MatSort;
 
   dataSource: any;
