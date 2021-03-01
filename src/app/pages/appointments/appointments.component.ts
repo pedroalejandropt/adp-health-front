@@ -10,7 +10,7 @@ import { UserService } from 'src/app/services/user.service';
 export class AppointmentsComponent implements OnInit {
 
   title: string = 'List of Appointments';
-  header: any = {'actions': 'Actions', 'firstName': 'Name', 'firstLastName': 'Last Name', 'date': 'Date' }
+  header: any = {'actions': 'Actions', 'firstName': 'Name', 'firstLastName': 'First Last Name', 'secondLastName': 'Second Last Name', 'date': 'Date' }
 
   appointments: any[] = [];
 
@@ -44,6 +44,7 @@ export class AppointmentsComponent implements OnInit {
       this.appointments = res.map((appointment) => { 
         appointment['firstName']= appointment.user.firstName;
         appointment['firstLastName']= appointment.user.firstLastName;
+        appointment['secondLastName']= appointment.user.secondLastName;
         appointment['email']= appointment.user.email;
         return appointment;
     });
@@ -55,6 +56,7 @@ export class AppointmentsComponent implements OnInit {
       this.appointments = res.map((appointment) => { 
         appointment['firstName']= appointment.user.firstName;
         appointment['firstLastName']= appointment.user.firstLastName;
+        appointment['secondLastName']= appointment.user.secondLastName;
         appointment['email']= appointment.user.email;
         return appointment;
     });
