@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { SignUpRoutingModule } from './sign-up-routing.module';
 
-import { MatInputModule, MatFormFieldModule, MatButtonModule, MatCheckboxModule, MatIconModule } from '@angular/material';
+import { MatInputModule, MatFormFieldModule, MatButtonModule, MatCheckboxModule, MatIconModule, MatCardModule } from '@angular/material';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SignUpComponent } from './sign-up.component';
@@ -21,6 +21,7 @@ import { SignUpComponent } from './sign-up.component';
     MatButtonModule,
     MatCheckboxModule,
     MatIconModule,
+    MatCardModule,
     FormsModule,
     ReactiveFormsModule
   ]
