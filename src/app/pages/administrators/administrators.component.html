@@ -1,0 +1,54 @@
+<app-table *ngIf="!form && !loading" [title]="title" [actions]="actions" [records]="administrators" [header]="header"></app-table>
+<div *ngIf="!form && !loading" class="new-admin">
+    <button mat-flat-button class='add' color='primary' (click)='form=!form'>Add</button>
+</div>
+
+<div *ngIf='form' class="screen">
+    <div class="card">
+        <div class="header">
+            <p class="title">
+                Medical Health
+            </p>
+        </div>
+        <div class="form">
+            <form #form="ngForm">
+                <mat-form-field appearance="outline">
+                    <mat-label>First Name</mat-label>
+                    <input matInput placeholder="" [(ngModel)]='administrator.firstName' name='firstName'>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Middle Name</mat-label>
+                    <input matInput placeholder="" [(ngModel)]='administrator.middleName' name='middleName'>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>First Last Name</mat-label>
+                    <input matInput placeholder="" [(ngModel)]='administrator.firstLastName' name='firstLastName'>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Second Last Name</mat-label>
+                    <input matInput placeholder="" [(ngModel)]='administrator.secondLastName' name='secondLastName'>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Email</mat-label>
+                    <input matInput placeholder="example@example.com" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z._%+-]{2,8}$" #email #email="ngModel" [(ngModel)]='administrator.email' name='email'>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Password</mat-label>
+                    <input matInput placeholder="*******" [(ngModel)]='administrator.password'
+                        [type]="hide ? 'password' : 'text'" name='password'>
+                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                        [attr.aria-pressed]="hide">
+                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                </mat-form-field>
+            </form>
+        </div>
+        <button mat-flat-button color='warn' (click)='cancel();'>Cancel</button>
+        <button mat-flat-button color='primary' (click)='addAdmin();' [disabled]='!form.valid || checkUser()'>Add User</button>
+        <div style="width: 100%; display: flex; justify-content: center;">
+            <mat-card *ngIf='error' class="error">{{ error }}</mat-card>
+        </div>
+    </div>
+</div>
+
+<mat-spinner *ngIf='loading'></mat-spinner>
