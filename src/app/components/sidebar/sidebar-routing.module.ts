@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes, RouterModule, CanActivate } from '@angular/router';
 import { SidebarComponent } from './sidebar.component';
-
+import { AuthGuardService as AuthGuard } from 'src/app/auth/auth-guard.service';
 
 const routes: Routes = [
   { 
@@ -10,11 +10,21 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        loadChildren: 'src/app/pages/appointments/appointments.module#AppointmentsModule'
+        loadChildren: 'src/app/pages/appointments/appointments.module#AppointmentsModule',
+        canActivate: [AuthGuard]
       },
       {
         path: 'pacients',
-        loadChildren: 'src/app/pages/pacients/pacients.module#PacientsModule'
+        loadChildren: 'src/app/pages/pacients/pacients.module#PacientsModule',
+        canActivate: [AuthGuard]
+      },
+      {
+        path: 'administrators',
+        loadChildren: 'src/app/pages/administrators/administrators.module#AdministratorsModule',
+        canActivate: [AuthGuard]
+      },
+      { 
+        path: '**', redirectTo: '' 
       }
     ]
   }
