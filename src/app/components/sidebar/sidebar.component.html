@@ -39,11 +39,11 @@
                 </button>
             </mat-list-item> -->
             <mat-list-item *ngIf='user.role.name=="Admin"'>
-                <button *ngIf='pxMeasure == 240' class='menu-item' mat-flat-button [routerLink]='["/dash"]'>
+                <button *ngIf='pxMeasure == 240' class='menu-item' mat-flat-button [routerLink]='["/dash/administrators"]'>
                     <mat-icon class='icon-item'>contacts</mat-icon><span>Administrators</span>
                 </button>
                 <button *ngIf='pxMeasure == 70' class="menu-item-compress" mat-flat-button
-                    [routerLink]='["/characters"]'>
+                    [routerLink]='["/dash/administrators"]'>
                     <mat-icon class='icon-item'>contacts</mat-icon>
                 </button>
             </mat-list-item>
