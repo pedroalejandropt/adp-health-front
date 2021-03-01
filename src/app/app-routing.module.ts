@@ -19,6 +19,9 @@ const routes: Routes = [
       {
         path: 'dash',
         loadChildren: 'src/app/components/sidebar/sidebar.module#SidebarModule'
+      },
+      { 
+        path: '**', redirectTo: '' 
       }
     ]
   }
