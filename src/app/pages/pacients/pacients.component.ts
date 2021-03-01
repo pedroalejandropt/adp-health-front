@@ -32,7 +32,7 @@ export class PacientsComponent implements OnInit {
     this.fetchUsers();
   }
 
-  fetchUsers = () => this._userservice.fetchUser().then((res: any) => { this.pacients = res; this.loading = false })
+  fetchUsers = () => this._userservice.fetchPacients().then((res: any) => { this.pacients = res; this.loading = false })
 
   addAppointment = (record) => { 
     this.record = record; 
