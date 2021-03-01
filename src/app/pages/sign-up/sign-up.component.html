@@ -1,6 +1,6 @@
 <div class="screen">
     <img alt='' class="img_background" src="../../../assets/home.svg"/>
-    <div class="signin card">
+    <div class="signup card">
         <div class="header">
             <p class="title">
                 Medical Health
@@ -10,34 +10,39 @@
             </p>
         </div>
         <div class="form">
-            <mat-form-field appearance="outline">
-                <mat-label>First Name</mat-label>
-                <input matInput placeholder="" [(ngModel)]='user.firstName'>
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>Middle Name</mat-label>
-                <input matInput placeholder="" [(ngModel)]='user.middleName'>
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>First Last Name</mat-label>
-                <input matInput placeholder="" [(ngModel)]='user.firstLastName'>
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>Second Last Name</mat-label>
-                <input matInput placeholder="" [(ngModel)]='user.secondLastName'>
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>Email</mat-label>
-                <input matInput placeholder="example@example.com" [(ngModel)]='user.email'>
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>Password</mat-label>
-                <input matInput placeholder="*******" [(ngModel)]='user.password' [type]="hide ? 'password' : 'text'">
-                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                </button>
-            </mat-form-field>
+            <form #form='ngForm'>
+                <mat-form-field appearance="outline">
+                    <mat-label>First Name</mat-label>
+                    <input matInput placeholder="" [(ngModel)]='user.firstName' name='firstName'>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Middle Name</mat-label>
+                    <input matInput placeholder="" [(ngModel)]='user.middleName' name='middleName'>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>First Last Name</mat-label>
+                    <input matInput placeholder="" [(ngModel)]='user.firstLastName' name='firstLastName'>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Second Last Name</mat-label>
+                    <input matInput placeholder="" [(ngModel)]='user.secondLastName' name='secondLastName'>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Email</mat-label>
+                    <input matInput placeholder="example@example.com" [(ngModel)]='user.email' name='email' pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z._%+-]{2,8}$" #email #email="ngModel">
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Password</mat-label>
+                    <input matInput placeholder="*******" [(ngModel)]='user.password' [type]="hide ? 'password' : 'text'" name='password'>
+                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                </mat-form-field>
+            </form>
         </div>
-        <button mat-flat-button color='primary' (click)='signUp();' [disabled]='checkUser()'>Sign Up</button>
+        <button mat-flat-button color='primary' (click)='signUp();' [disabled]='!form.valid || checkUser()'>Sign Up</button>
+        <div style="width: 100%; display: flex; justify-content: center;">
+            <mat-card *ngIf='error' class="error">{{ error }}</mat-card>
+        </div>
     </div>
 </div>
