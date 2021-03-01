@@ -12,6 +12,8 @@ export class UserService {
   constructor(private _http: HttpClient) { }
 
   fetchUser = () => { return this._http.get(`${this.url}`).toPromise() }
+  fetchPacients = () => { return this._http.get(`${this.url}pacient`).toPromise() }
+  fetchAdministrators = () => { return this._http.get(`${this.url}admin`).toPromise() }
 
   getUserById = (id) => { return this._http.get(`${this.url}${id}`).toPromise() }
 
