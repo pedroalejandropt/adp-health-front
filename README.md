@@ -10,6 +10,11 @@ Run `npm install` to install all the dependencies.
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
+## Project Screens
+
+![alt text](https://github.com/pedroalejandropt/adp-health-front/blob/master/src/assets/signin.jpg?raw=true)
+![alt text](https://github.com/pedroalejandropt/adp-health-front/blob/master/src/assets/signup.jpg?raw=true)
+
 ## Code scaffolding
 
 Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
