@@ -12,8 +12,8 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 
 ## Project Screens
 
-![plot](https://github.com/pedroalejandropt/adp-health-front/blob/master/src/assets/signin.jpg?raw=true)
-![plot](https://github.com/pedroalejandropt/adp-health-front/blob/master/src/assets/signup.jpg?raw=true)
+![plot](https://github.com/pedroalejandropt/adp-health-front/blob/master/src/assets/screens/signin.jpg?raw=true)
+![plot](https://github.com/pedroalejandropt/adp-health-front/blob/master/src/assets/screens/signup.jpg?raw=true)
 
 ## Code scaffolding
 
