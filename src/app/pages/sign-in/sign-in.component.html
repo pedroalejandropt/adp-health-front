@@ -13,23 +13,26 @@
             </p>
         </div>
         <div class="form">
-            <mat-form-field appearance="outline">
-                <mat-label>Email</mat-label>
-                <input matInput placeholder="example@example.com" [(ngModel)]='user.email'>
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>Password</mat-label>
-                <input matInput placeholder="*******" [(ngModel)]='user.password'  [type]="hide ? 'password' : 'text'">
-                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                </button>
-            </mat-form-field>
+            <form #form='ngForm'>
+                <mat-form-field appearance="outline">
+                    <mat-label>Email</mat-label>
+                    <input matInput placeholder="example@example.com" #email #email="ngModel" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z._%+-]{2,8}$" [(ngModel)]='user.email' name='email'>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Password</mat-label>
+                    <input matInput placeholder="*******" [(ngModel)]='user.password'  [type]="hide ? 'password' : 'text'" name='password'>
+                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                </mat-form-field>
+            </form>
         </div>
         <div class="remember">
             <section class="">
                 <mat-checkbox class="remember_checkbox"> Remember this device.</mat-checkbox>
             </section>
         </div>
-        <button mat-flat-button color='primary' (click)='login();' [disabled]='checkUser()'>Sign In</button>
+        <button mat-flat-button color='primary' (click)='login();' [disabled]='!form.valid || checkUser()'>Sign In</button>
+        <mat-card *ngIf='error' class="error">Mail or Password Invalids. Try Again.</mat-card>
     </div>
 </div>
